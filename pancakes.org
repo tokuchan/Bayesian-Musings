@@ -1,0 +1,35 @@
+#+TITLE: The Pancake Problem
+#+AUTHOR: Sean R. Spillane
+
+* Introduction
+Imaging a stake of five pancakes. Now, the cook who gave us these pancakes isn't
+very good. He managed to burn two of the five pancakes on one side, and he
+burned two more of them on /both/ sides. If we look at the top of the stack, we
+see a burned face on the topmost pancake. Now, without moving any of the
+pancakes, can you estimate the probability that the topmost pancake is burned on
+both sides?
+
+It might seem obvious, at first. You could say that the odds of the topmost
+pancake being burned are $\frac{2}{5}$, but that doesn't take the information
+that you already have, that the topmost face of the pancake is burnt, into
+account. To get the real answer, you need to recalculate the probability in
+light of this new evidence.
+
+We can use Bayes's theorem to compute this probability. Intuitively, we can ask,
+"if we live in a Universe where the topmost pancake is burned on its topmost
+face, how likely is it that that pancake is burned on both sides?"
+
+Let's use Bayes's theorem to put it in numbers. Let $\circ$ indicate an unburned
+face, and $\bullet$, a burned face. Let $B$ indicate the count of burned faces on
+a pancake. So $B_0$ is unburned, $B_1$ is burned on one side, and $B_2$ is
+burned on both sides. Then $P\left(B_1|\bullet\right)$ is the probability that
+the pancake is burned on one side, /given/ that we observe a burned side.
+
+First, we should note that $P\left(B_0|\bullet\right) = 0$, since an unburned
+pancake cannot have any burned faces.
+
+$$P\left(B_2|\bullet\right) = \frac{P\left(B_2\right)\times P\left(\bullet|B_2\right)}{P\left(\bullet\right)} = \frac{\frac{2}{5}\times 1}{P\left(\frac{4}{10}\right)\times P\left(\frac{2}{10}\right)} = \frac{\frac{2}{5}}{\frac{2}{3}} = \frac{2}{3}$$
+
+We can of course compute the remaining probability, simply by subtracting from 1.
+
+$$P\left(B_1|\bullet\right) = 1 - P\left(B_2|\bullet\right) - P\left(B_0|\bullet\right) = \frac{1}{3}$$
